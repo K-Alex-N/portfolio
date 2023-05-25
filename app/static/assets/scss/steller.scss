@@ -1,0 +1,78 @@
+/*!
+=========================================================
+* Steller Landing page
+=========================================================
+
+* Copyright: 2019 DevCRUD (https://devcrud.com)
+* Licensed: (https://devcrud.com/licenses)
+* Coded by www.devcrud.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
+
+// Core
+@import "functions";
+
+// custom variables
+@import "variables";
+// bootstrap variables
+@import "variables";
+
+@import "mixins";
+@import "mixins";
+
+
+// Bootstrap 4.3.1
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+@import "input-group";
+@import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "breadcrumb";
+@import "pagination";
+@import "badge";
+@import "jumbotron";
+@import "alert";
+@import "progress";
+@import "../../../../media";
+@import "list-group";
+@import "close";
+@import "toasts";
+@import "modal";
+@import "tooltip";
+@import "popover";
+@import "carousel";
+@import "spinners";
+@import "utilities";
+@import "print";
+
+
+// custom 
+@import "typography";
+
+@import "buttons";
+@import "cards";
+@import "carousel";
+@import "forms";
+@import "googlemap";
+@import "navbar";
+@import "progressbar";
+
+@import "footer";
+@import "header";
+@import "section";

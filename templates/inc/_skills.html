@@ -1,0 +1,29 @@
+{#{% load static %}#}
+{#<link rel="stylesheet" type="text/css" href="{% static 'Bootstrap523/css/bootstrap.min.css' %}">#}
+<section id="skills" class="section">
+    <div class="container text-center">
+        <h6 class="subtitle">Skills</h6>
+        {#            <h6 class="section-title mb-4">Skills</h6>#}
+        <!--            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>-->
+
+        <div class="container text-left">
+
+            {% for s in skills %}
+                <div class="row justify-content-md-center">
+                    <div class="col-sm-7">
+                        <h6 class="mb-1">{{ s.name }}</h6>
+                        <div class="progress">
+                            <div class="progress-bar text-dark" role="progressbar" style="width: {{ s.value }}%;"
+                                 aria-valuenow="{{ s.value }}" aria-valuemin="0" aria-valuemax="100">
+                                <div style="font-size: 14px;background: {{ s.background }};">
+                                    <b>{{ s.text }}</b> уровень знаний
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
