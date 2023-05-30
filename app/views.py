@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 skills = [
     {'name': 'Python', 'value': 90},
@@ -17,22 +18,27 @@ skills = [
 
 
 def index(request):
+    skills = Skill.objects.all()
 
     for s in skills:
-        if s['value'] > 83:
-            s['background'] = '#A9D18E'
-            s['text'] = 'очень хороший'
-        elif s['value'] >= 66:
-            s['background'] = '#C5E0B4'
-            s['text'] = 'хороший'
-        elif s['value'] >= 50:
-            s['background'] = '#E2F0D9'
-            s['text'] = 'средний'
-        else:
-            s['background'] = '#E2F0D9'
-            s['text'] = 'начальный'
+        if s.type == 'progress_bar':
+            if s.skill_score > 83:
+                s.background = '#A9D18E'
+                s.text_on_bar = 'очень хороший'
+            elif s.skill_score >= 66:
+                s.background = '#C5E0B4'
+                s.text_on_bar = 'хороший'
+            elif s.skill_score >= 50:
+                s.background = '#E2F0D9'
+                s.text_on_bar = 'средний'
+            else:
+                s.background = '#E2F0D9'
+                s.text_on_bar = 'начальный'
 
-    return render(request, 'index.html', {'skills': skills})
+    projects = Project.objects.all()
+
+    return render(request, 'index.html', {'skills': skills, 'projects': projects})
+
 
 def test(request):
     return render(request, 'test.html')

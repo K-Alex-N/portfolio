@@ -2,87 +2,76 @@
 <html lang="en">
 <head>
     {% load static %}
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Steller landing page.">
     <meta name="author" content="Devcrud">
     <title>Alexey Kurochkin | Portfolio</title>
     <!-- font icons -->
-{#    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/themify-icons/css/themify-icons.css' %}">#}
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendors/themify-icons/css/themify-icons.css' %}">#}
     <!-- Bootstrap + Steller main styles -->
-	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/steller.css' %}">
-{#    <link rel="stylesheet" type="text/css" href="{% static 'Bootstrap523/css/bootstrap.min.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/steller.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'Bootstrap523/css/bootstrap.min.css' %}">#}
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
 
-    <!-- Page navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
-        <div class="container">
+<!-- Page navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" data-spy="affix" data-offset-top="0">
+    <div class="container">
 
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#project1">Project 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#project2">Project 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testmonial">Testmonial</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#blog">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
 
-                </ul>
-            </div>
+                {% for p in projects %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="#{{ p.short_title }}">{{ p.short_title }}</a>
+                    </li>
+                {% endfor %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <!-- Page Home -->
-    <header class="header" id="home">
-        <div class="container">
-            <div class="infos">
-                <h6 class="subtitle">hello, I'm</h6>
-                <h6 class="title">Алексей Курочкин</h6>
-                <p>Backend Python Developer</p>
+<!-- Page Home -->
+<header class="header" id="home">
+    <div class="container">
+        <div class="infos">
+            <h6 class="subtitle">hello, I'm</h6>
+            <h6 class="title">Алексей Курочкин</h6>
+            <p>Backend Python Developer</p>
 
-                <div class="buttons pt-3">
-                    <button class="btn btn-primary rounded">Резюме (PDF)</button>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <p>Контакты</p>
-                <div class="socials mt-4">
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>
-                    <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>
-                </div>
-            </div>
+{#            <div class="buttons pt-3">#}
+{#                <button class="btn btn-primary rounded">Резюме (PDF)</button>#}
+{#            </div>#}
+{#            <br> <br> <br> <br>#}
+{#            <p>Контакты</p>#}
+{#            <div class="socials mt-4">#}
+{#                <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>#}
+{#                <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>#}
+{#                <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>#}
+{#                <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>#}
+{#            </div>#}
         </div>
+    </div>
 
-    </header>
+</header>
 
-    <!-- Page Skills -->
-    <section id="skills" class="section">
+<!-- Skills -->
+<section id="skills" class="section">
     <div class="container text-start">
-        <h6 class="subtitle">Skills</h6>
+        <br><h6 class="subtitle">Skills</h6>
         <br>
         {#            <h6 class="section-title mb-4">Skills</h6>#}
         <!--            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>-->
@@ -90,19 +79,28 @@
         <div class="container text-start">
 
             {% for s in skills %}
-                <div class="row justify-content-md-start">
-                    <div class="col-sm-7">
-                        <h6 class="mb-1">{{ s.name }}</h6>
-                        <div class="progress">
-                            <div class="progress-bar text-dark" role="progressbar" style="width: {{ s.value }}%;"
-                                 aria-valuenow="{{ s.value }}" aria-valuemin="0" aria-valuemax="100">
-                                <div style="font-size: 14px;background: {{ s.background }};">
-                                    <b>{{ s.text }}</b> уровень знаний
+                {% if not s.is_hidden %}
+                    <div class="row justify-content-md-start">
+                        {% if s.type == 'title' %}
+                            <h6 class="section-title mb-5 mt-4">{{ s.text }}</h6>
+                        {% elif s.type == 'progress_bar' %}
+                            <div class="col-8">
+                                <h6 class="mb-2">{{ s.text }}</h6>
+                                <div class="progress">
+                                    <div class="progress-bar text-dark" role="progressbar"
+                                         style="width: {{ s.skill_score }}%;"
+                                         aria-valuenow="{{ s.skill_score }}" aria-valuemin="0" aria-valuemax="100">
+                                        <div style="font-size: 14px;background: {{ s.background }};">
+                                            <b>{{ s.text_on_bar }}</b> уровень знаний
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        {% else %}
+
+                        {% endif %}
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
 
         </div>
@@ -110,91 +108,93 @@
 </section>
 
 
-    <!-- Portfolio section -->
-    <section id="project1" class="section">
+<!-- projects section -->
+{% for p in projects %}
+    <section id="{{ p.short_title }}" class="section">
         <div class="container text-start">
-            <h6 class="subtitle">Project 1</h6>
-            <h6 class="section-title mb-4">Парсер сайта GitHub c web-интерфейсом на Flask</h6>
-            <p class="mb-5 pb-4">
-                Картинку добавить. Да блин прежде всего его нужно запустить на хостинге чтобы скрапить начал!!!
-                <br>Любой человек может добавить задание на парсинг. Это список сайтов которые нужно ежедневно парсить.
-                <br>Например "Web frameworks", в списке django, flask, fastapi и т.д. Пасрер ежедневно собирает данные о количестве звезд, последнем резизе и тд
-                •	Парсер GitHub - https://github.com/K-Alex-N/get_data_from_github
-                    o	Сейчас запущен парсинг web-фрэймворков (Django, Flask, FastAPI…).
-                    o	Собираются данные о количестве звезд, дате последнего релиза и тд.
-                    o	Скрипт работает на хостинге и автоматически запускается каждый день.
-                    o	Данные пишутся в MySQL
+            <br><h6 class="subtitle">{{ p.short_title }}</h6>
+            <br><h6 class="section-title mb-4">{{ p.title }}</h6>
+            <b>Инструменты: </b>{{ p.tools }}
+            <br><b>Задача: </b>{{ p.goal }}
+            <br><b>Описание: </b>{{ p.description }}
+{#            <p class="mb-5 pb-4">{{ p.description }}#}
 
-                <br><a href="#" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link to site</a>
-                <br><b>Использовалось:</b> Flask, SQLAlchemy 2.0, Beautifulsoup, PostgreSQL
-                <br><a href="#" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Source code</a>
-
+                <br><a href="{{ p.link_to_site }}"
+                       class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link
+                    to site</a>
+                <br><a href="{{ p.link_to_code }}"
+                       class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link
+                    to source code</a>
             </p>
         </div>
     </section>
-    <!-- End of portfolio section -->
+{% endfor %}
 
-    <!-- Contact Section -->
-    <section id="contact" class="position-relative section">
-        <div class="container text-center">
-            <h6 class="subtitle">Contact</h6>
-            <h6 class="section-title mb-4">Get In Touch With Me</h6>
-            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>
+<!-- Contact Section -->
+<section id="contact" class="position-relative section">
+    <div class="container text-center">
+        <h6 class="subtitle">Contact</h6>
+        <h6 class="section-title mb-4">Get In Touch With Me</h6>
+        <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum
+            commodi corrupti, temporibus non quam.</p>
 
-            <div class="contact text-left">
-                <div class="form">
-                    <h6 class="subtitle">Available 24/7</h6>
-                    <h6 class="section-title mb-4">Get In Touch</h6>
-                    <form>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="contact-message" id="" cols="30" rows="5" class="form-control" placeholder="Message"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block rounded w-lg">Send Message</button>
-                    </form>
+        <div class="contact text-left">
+            <div class="form">
+                <h6 class="subtitle">Available 24/7</h6>
+                <h6 class="section-title mb-4">Get In Touch</h6>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                               placeholder="Enter email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="contact-message" id="" cols="30" rows="5" class="form-control"
+                                  placeholder="Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block rounded w-lg">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-infos">
+                <div class="item">
+                    <i class="ti-location-pin"></i>
+                    <div class="">
+                        <h5>Location</h5>
+                        <p> 12345 Fake ST NoWhere AB Country</p>
+                    </div>
                 </div>
-                <div class="contact-infos">
-                    <div class="item">
-                        <i class="ti-location-pin"></i>
-                        <div class="">
-                            <h5>Location</h5>
-                            <p> 12345 Fake ST NoWhere AB Country</p>
-                        </div>
+                <div class="item">
+                    <i class="ti-mobile"></i>
+                    <div>
+                        <h5>Phone Number</h5>
+                        <p>(123) 456-7890</p>
                     </div>
-                    <div class="item">
-                        <i class="ti-mobile"></i>
-                        <div>
-                            <h5>Phone Number</h5>
-                            <p>(123) 456-7890</p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="ti-email"></i>
-                        <div class="mb-0">
-                            <h5>Email Address</h5>
-                            <p>info@website.com</p>
-                        </div>
+                </div>
+                <div class="item">
+                    <i class="ti-email"></i>
+                    <div class="mb-0">
+                        <h5>Email Address</h5>
+                        <p>info@website.com</p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </section>
-    <!-- End of Contact Section -->
+</section>
+<!-- End of Contact Section -->
 
 
-	<!-- core  -->
-    <script src="{% static 'assets/vendors/jquery/jquery-3.4.1.js' %}"></script>
-    <script src="{% static 'assets/vendors/bootstrap/bootstrap.bundle.js' %}"></script>
-    <!-- bootstrap 3 affix -->
-	<script src="{% static 'assets/vendors/bootstrap/bootstrap.affix.js' %}"></script>
-    <!-- steller js -->
-    <script src="{% static 'assets/js/steller.js' %}"></script>
+<!-- core  -->
+<script src="{% static 'assets/vendors/jquery/jquery-3.4.1.js' %}"></script>
+<script src="{% static 'assets/vendors/bootstrap/bootstrap.bundle.js' %}"></script>
+<!-- bootstrap 3 affix -->
+<script src="{% static 'assets/vendors/bootstrap/bootstrap.affix.js' %}"></script>
+<!-- steller js -->
+<script src="{% static 'assets/js/steller.js' %}"></script>
 
 </body>
 </html>
