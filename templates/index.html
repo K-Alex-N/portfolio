@@ -115,7 +115,8 @@
 
             {# feetback #}
             <br><br><br>
-            <form class="col-8">
+            {# <form class="col-8" method="post" action="#{{ p.short_title }}"> #}
+            <form class="col-8" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <textarea name="msg" rows="5" class="form-control"
