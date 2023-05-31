@@ -1,12 +1,12 @@
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
+
 
 TYPE = (
     ('title', 'title'),
     ('progress_bar', 'progress_bar'),
     ('text', 'text'),
 )
-
 
 class Skill(models.Model):
     order = models.PositiveIntegerField()
@@ -23,7 +23,7 @@ class Skill(models.Model):
 class Project(models.Model):
     short_title = models.CharField(max_length=100)
     title = models.CharField(max_length=1000)
-    description = RichTextField()
+    description = RichTextUploadingField()
     link_to_site = models.CharField(max_length=500, blank=True)
     link_to_code = models.CharField(max_length=500)
 

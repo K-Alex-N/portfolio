@@ -1,13 +1,6 @@
 from django.contrib import admin
-from django.forms.widgets import Textarea
 
 from .models import *
-
-
-class ProjectAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.CharField: {"widget": Textarea(attrs={'column': 150, 'rows': 3})},
-    }
 
 
 class SkillAdmin(admin.ModelAdmin):
@@ -21,5 +14,5 @@ class SkillAdmin(admin.ModelAdmin):
         }
 
 
-admin.site.register(Project, ProjectAdmin)
+admin.site.register(Project)
 admin.site.register(Skill, SkillAdmin)
