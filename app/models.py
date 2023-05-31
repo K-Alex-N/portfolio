@@ -1,6 +1,5 @@
 from ckeditor.fields import RichTextField
 from django.db import models
-# from djrichtextfield.models import RichTextField
 
 TYPE = (
     ('title', 'title'),
@@ -24,8 +23,6 @@ class Skill(models.Model):
 class Project(models.Model):
     short_title = models.CharField(max_length=100)
     title = models.CharField(max_length=1000)
-    # tools = models.CharField(max_length=1000)
-    # goal = models.CharField(max_length=1000)
     description = RichTextField()
     link_to_site = models.CharField(max_length=500, blank=True)
     link_to_code = models.CharField(max_length=500)
@@ -35,5 +32,3 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['short_title']
-
-
