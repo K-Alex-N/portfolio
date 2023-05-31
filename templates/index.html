@@ -35,10 +35,6 @@
                     </li>
                 {% endfor %}
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
-                </li>
-
             </ul>
         </div>
     </div>
@@ -52,17 +48,17 @@
             <h6 class="title">Алексей Курочкин</h6>
             <p>Backend Python Developer</p>
 
-{#            <div class="buttons pt-3">#}
-{#                <button class="btn btn-primary rounded">Резюме (PDF)</button>#}
-{#            </div>#}
-{#            <br> <br> <br> <br>#}
-{#            <p>Контакты</p>#}
-{#            <div class="socials mt-4">#}
-{#                <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>#}
-{#                <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>#}
-{#                <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>#}
-{#                <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>#}
-{#            </div>#}
+            {#            <div class="buttons pt-3">#}
+            {#                <button class="btn btn-primary rounded">Резюме (PDF)</button>#}
+            {#            </div>#}
+            {#            <br> <br> <br> <br>#}
+            {#            <p>Контакты</p>#}
+            {#            <div class="socials mt-4">#}
+            {#                <a class="social-item" href="javascript:void(0)"><i class="ti-facebook"></i></a>#}
+            {#                <a class="social-item" href="javascript:void(0)"><i class="ti-google"></i></a>#}
+            {#                <a class="social-item" href="javascript:void(0)"><i class="ti-github"></i></a>#}
+            {#                <a class="social-item" href="javascript:void(0)"><i class="ti-twitter"></i></a>#}
+            {#            </div>#}
         </div>
     </div>
 
@@ -71,13 +67,8 @@
 <!-- Skills -->
 <section id="skills" class="section">
     <div class="container text-start">
-        <br><h6 class="subtitle">Skills</h6>
-        <br>
-        {#            <h6 class="section-title mb-4">Skills</h6>#}
-        <!--            <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum commodi corrupti, temporibus non quam.</p>-->
-
+        <br><h6 class="subtitle">Skills</h6><br>
         <div class="container text-start">
-
             {% for s in skills %}
                 {% if not s.is_hidden %}
                     <div class="row justify-content-md-start">
@@ -97,12 +88,10 @@
                                 </div>
                             </div>
                         {% else %}
-
                         {% endif %}
                     </div>
                 {% endif %}
             {% endfor %}
-
         </div>
     </div>
 </section>
@@ -114,78 +103,36 @@
         <div class="container text-start">
             <br><h6 class="subtitle">{{ p.short_title }}</h6>
             <br><h6 class="section-title mb-4">{{ p.title }}</h6>
-            <b>Инструменты: </b>{{ p.tools }}
-            <br><b>Задача: </b>{{ p.goal }}
-            <br><b>Описание: </b>{{ p.description }}
-{#            <p class="mb-5 pb-4">{{ p.description }}#}
+            <div class="btn-group" role="group">
+                {% if p.link_to_site == 'текущий сайт' %}
+                    <a class="btn btn-outline-primary active">link to site</a>
+                {% else %}
+                    <a href="{{ p.link_to_site }}" type="button" class="btn btn-outline-primary">link to site</a>
+                {% endif %}
+                <a href="{{ p.link_to_code }}" type="button" class="btn btn-outline-primary">link to source code</a>
+            </div>
+            <br><br>{{ p.description | safe }}
 
-                <br><a href="{{ p.link_to_site }}"
-                       class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link
-                    to site</a>
-                <br><a href="{{ p.link_to_code }}"
-                       class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">link
-                    to source code</a>
-            </p>
+            {# feetback #}
+            <br><br><br>
+            <form class="col-8">
+                {% csrf_token %}
+                <div class="form-group">
+                    <textarea name="msg" rows="5" class="form-control"
+                              placeholder="пару слов о проекте? буду рад любой обратной связи (что понравилось, что нет, что улучшить ...)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input name="email" class="form-control"
+                           placeholder="email (не обязательно). но если добавите, то я Вам отвечу как исправлю замечания">
+                </div>
+                <input type="hidden" name="project" value="{{ p.title }}">
+                <button type="submit" class="btn btn-outline-primary btn-block w-lg">Отправить</button>
+            </form>
         </div>
     </section>
 {% endfor %}
 
-<!-- Contact Section -->
-<section id="contact" class="position-relative section">
-    <div class="container text-center">
-        <h6 class="subtitle">Contact</h6>
-        <h6 class="section-title mb-4">Get In Touch With Me</h6>
-        <p class="mb-5 pb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In alias dignissimos. <br> rerum
-            commodi corrupti, temporibus non quam.</p>
-
-        <div class="contact text-left">
-            <div class="form">
-                <h6 class="subtitle">Available 24/7</h6>
-                <h6 class="section-title mb-4">Get In Touch</h6>
-                <form>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                               placeholder="Enter email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
-                               required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="contact-message" id="" cols="30" rows="5" class="form-control"
-                                  placeholder="Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block rounded w-lg">Send Message</button>
-                </form>
-            </div>
-            <div class="contact-infos">
-                <div class="item">
-                    <i class="ti-location-pin"></i>
-                    <div class="">
-                        <h5>Location</h5>
-                        <p> 12345 Fake ST NoWhere AB Country</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="ti-mobile"></i>
-                    <div>
-                        <h5>Phone Number</h5>
-                        <p>(123) 456-7890</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <i class="ti-email"></i>
-                    <div class="mb-0">
-                        <h5>Email Address</h5>
-                        <p>info@website.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section>
-<!-- End of Contact Section -->
 
 
 <!-- core  -->

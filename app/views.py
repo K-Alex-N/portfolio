@@ -1,20 +1,23 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
 from .models import *
 
-skills = [
-    {'name': 'Python', 'value': 90},
-    {'name': 'ООП', 'value': 80},
-    {'name': 'SQL (PostgreSQL, MySQL)', 'value': 70},
-    {'name': 'SQLAlchemy', 'value': 70},
-    {'name': 'Django', 'value': 70},
-    {'name': 'Flask', 'value': 70},
-    {'name': 'Aiohttp', 'value': 50},
-    {'name': 'FastAPI', 'value': 50},
-    {'name': 'Pytest, Unittest', 'value': 70},
-    {'name': 'Алгоритмы и структуры данных', 'value': 90},
-    {'name': 'Регулярные выражения', 'value': 70},
-    {'name': 'Beautifulsoup, Selenium', 'value': 70},
-]
+
+def feedback(request):
+    if request.method == "POST":
+        msg = request.POST.get('msg')
+        project = request.POST.get('project')
+        email = request.POST.get('email')
+        if email:
+            msg += f'\nОтправитель: {email}'
+        mail = send_mail(
+            'Фитбэк с сайта-визитки',
+            msg,
+            settings.EMAIL_HOST_USER,
+            ['KurochkinAlexei@yandex.ru'],
+            fail_silently=False
+        )
+    return redirect('index')
 
 
 def index(request):
