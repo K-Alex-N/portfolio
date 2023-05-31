@@ -1,0 +1,21 @@
+secret_key: f%rr+flt!rt@eqc#0h3-yz%$-b1t$ups-_8(960#9j3nicg*bw
+
+
+email_host:
+  user: andrudjangoproject@yandex.ru
+#  password: bifhppvwdnmeitwd
+  password: iiektaeuxrnjmwen
+
+
+
+db:
+  user: postgres2
+  password: 123
+  host: localhost
+  port: 5432
+  database: portfolio
+
+
+
+
+
