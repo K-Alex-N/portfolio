@@ -91,20 +91,20 @@
             <br><br>{{ p.description | safe }}
 
             {# feetback #}
-            <br><br><br>
-            <form class="col-8" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <textarea name="msg" rows="5" class="form-control"
-                              placeholder="пару слов о проекте? буду рад любой обратной связи (что понравилось, что нет, что улучшить ...)"></textarea>
-                </div>
-                <div class="form-group">
-                    <input name="email" class="form-control"
-                           placeholder="email (не обязательно). но если добавите, то я Вам отвечу как исправлю замечания">
-                </div>
-                <input type="hidden" name="project" value="{{ p.title }}">
-                <button type="submit" class="btn btn-outline-primary btn-block w-lg">Отправить</button>
-            </form>
+{#            <br><br><br>#}
+{#            <form class="col-8" method="post">#}
+{#                {% csrf_token %}#}
+{#                <div class="form-group">#}
+{#                    <textarea name="msg" rows="5" class="form-control"#}
+{#                              placeholder="пару слов о проекте? буду рад любой обратной связи (что понравилось, что нет, что улучшить ...)"></textarea>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <input name="email" class="form-control"#}
+{#                           placeholder="email (не обязательно). но если добавите, то я Вам отвечу как исправлю замечания">#}
+{#                </div>#}
+{#                <input type="hidden" name="project" value="{{ p.title }}">#}
+{#                <button type="submit" class="btn btn-outline-primary btn-block w-lg">Отправить</button>#}
+{#            </form>#}
         </div>
     </section>
 {% endfor %}
